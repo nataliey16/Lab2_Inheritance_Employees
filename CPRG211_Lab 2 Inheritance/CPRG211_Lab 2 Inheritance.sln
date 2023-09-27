@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CPRG211_Lab 2 Inheritance", "CPRG211_Lab 2 Inheritance\CPRG211_Lab 2 Inheritance.csproj", "{D4C399D0-D7EE-4171-9440-DD8E9A29DE25}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D4C399D0-D7EE-4171-9440-DD8E9A29DE25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4C399D0-D7EE-4171-9440-DD8E9A29DE25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4C399D0-D7EE-4171-9440-DD8E9A29DE25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4C399D0-D7EE-4171-9440-DD8E9A29DE25}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D2FE8050-E5F2-441E-9B42-CF125F97D683}
+	EndGlobalSection
+EndGlobal
