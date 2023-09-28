@@ -46,11 +46,9 @@ namespace CPRG211_Lab_2_Inheritance
             // Method to display a list of salaried employee information.
         public override string ToString() {
 
+            return $"The lowest salary pay is ${Salary:C} for salaried employee, {Name}.";
 
-            string salariedEmpInfo = "Salaried Employee: " + base.ToString();
-            return salariedEmpInfo;
-        
         }
-        
+
     }
 }

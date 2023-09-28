@@ -69,8 +69,8 @@ namespace CPRG211_Lab_2_Inheritance
 
         public override string ToString()
         {
-            string wagesEmpInfo = "Wage Employee: " + base.ToString() + " " + rate + " " + hours;
-            return wagesEmpInfo;
+            double weeklyWagesPay = GetPay(); 
+            return $"The highest weekly pay is ${weeklyWagesPay:C} for wages employee, {Name}.";
         }
 
 

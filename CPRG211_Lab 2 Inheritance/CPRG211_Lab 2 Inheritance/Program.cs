@@ -13,11 +13,6 @@ namespace CPRG211_Lab_2_Inheritance
 
             List<Employee> employees = new List<Employee>();
 
-            foreach (Employee employee in employees)
-            {
-                Console.WriteLine(employee);
-            }
-
 
             foreach (string line in lines) // For every line in lines (aka the employee text file)
             {
@@ -33,9 +28,6 @@ namespace CPRG211_Lab_2_Inheritance
                 string sin = columns[4];
                 string dob = columns[5];
                 string dept = columns[6];
-                //string salary = columns[7];
-                //string rate = columns[8];
-                //string hours = columns[9];
 
 
                 char firstDigitOfId = id[0]; // Recall a string is collection of chars (characters/letters). Convert variable to char because we only want 1 character, not an entire string 
@@ -50,11 +42,6 @@ namespace CPRG211_Lab_2_Inheritance
                         Salaried salariedEmp = new Salaried(id, name, address, phone, long.Parse(sin), dob, dept, double.Parse(salary));
                         employees.Add(salariedEmp); // Add the object to the List
 
-                        Console.WriteLine(salariedEmp.ToString());
-
-                        double showSalary = salariedEmp.GetPay();
-                        Console.WriteLine(showSalary);
-
                     }
                 }
                 else if (firstDigitOfId == '5' || firstDigitOfId == '6' || firstDigitOfId == '7')
@@ -67,10 +54,8 @@ namespace CPRG211_Lab_2_Inheritance
                         //Created Wages Object
                         Wages wagesEmp = new Wages(id, name, address, phone, long.Parse(sin), dob, dept, double.Parse(rate), double.Parse(hours));
                         employees.Add(wagesEmp); // Add the object to the List 
-                        Console.WriteLine(wagesEmp.ToString());
 
-                        double showWages = wagesEmp.GetPay();
-                        Console.WriteLine(showWages);
+
                     }
                 }
                 else if (firstDigitOfId == '8' || firstDigitOfId == '9')
@@ -83,12 +68,8 @@ namespace CPRG211_Lab_2_Inheritance
                         //Create Part-time Object
 
                         PartTime partTimeEmp = new PartTime(id, name, address, phone, long.Parse(sin), dob, dept, double.Parse(rate), double.Parse(hours));
-                        employees.Add(partTimeEmp); // Add the object to the list 
+                        employees.Add(partTimeEmp); // Add the object to the list
 
-                        Console.WriteLine(partTimeEmp.ToString());
-
-                        double showPartTimePay = partTimeEmp.GetPay();
-                        Console.WriteLine(showPartTimePay);
 
                     }
                 }
@@ -98,7 +79,6 @@ namespace CPRG211_Lab_2_Inheritance
 
             // Calculate and return the average weekly pay for all employees.
             double totalWeeklyPay = 0.0;
-            int numberOfEmplPerCategory = 0;
 
             foreach(Employee employee in employees)
             {
@@ -124,13 +104,15 @@ namespace CPRG211_Lab_2_Inheritance
 
             double avgWeeklyPay = Math.Round(totalWeeklyPay / (employees.Count),2);
 
-            Console.WriteLine($"The average weekly pay for all employees is ${avgWeeklyPay}.");
+            Console.WriteLine($"The average weekly pay for all employees is ${avgWeeklyPay:C}.");
 
 
 
             // Calculate and return the highest weekly pay for the wage employees, including the name of the employee.
             double highestWagesPay = double.MinValue;
             string highestWagesEmpName = string.Empty;
+            Wages highestWageEmployee = null;
+
 
             foreach (Employee employee in employees)
             {
@@ -141,17 +123,22 @@ namespace CPRG211_Lab_2_Inheritance
                     {
                         highestWagesPay = Math.Round(showWages,2);
                         highestWagesEmpName = wagesEmp.Name;
+                        highestWageEmployee = wagesEmp;
                     }
                 }
             }
 
-            Console.WriteLine($"The highest weekly pay is ${highestWagesPay} for wages employee, {highestWagesEmpName}.");
-
+            if (highestWageEmployee != null)
+            {
+                Console.WriteLine(highestWageEmployee.ToString()); // Call the ToString method
+            }
 
             // Calculate and return the lowest salary for the salaried employees, including the name of the employee.
 
             double lowestSalariedPay = double.MaxValue;
             string lowestSalariedEmpName = string.Empty;
+            Salaried lowestSalariedEmp = null;
+
 
             foreach (Employee employee in employees)
             {
@@ -163,32 +150,36 @@ namespace CPRG211_Lab_2_Inheritance
                     {
                         lowestSalariedPay = Math.Round(showSalary);
                         lowestSalariedEmpName = salariedEmp.Name;
+                        lowestSalariedEmp = salariedEmp;
+
                     }
                 }
             }
-            Console.WriteLine($"The lowest salary pay is ${lowestSalariedPay} for salaried employee, {lowestSalariedEmpName}.");
-
+            if (lowestSalariedEmp != null)
+            {
+                Console.WriteLine(lowestSalariedEmp.ToString()); // Call the ToString method
+            }
 
 
             //Calculate the percentage of the company’s employees that fall into each employee category
 
 
-                //Count the number of employees in each employee category
+            //Count the number of employees in each employee category
             double numOfSalariedEmp = employees.Count(e => e is Salaried);
             double numOfWagesEmp = employees.Count(e => e is Wages);
             double numOfPartTimeEmp = employees.Count(e => e is PartTime);
             double totalNumOfEmployees = employees.Count();
 
-                // Find the percentage
+            // Find the percentage
 
             double percentOfSalariedEmp = Math.Round((numOfSalariedEmp / totalNumOfEmployees) * 100,1);
             double percentOfWagesEmp = Math.Round((numOfWagesEmp / totalNumOfEmployees) * 100,1);
             double percentOfPartTimeEmp = Math.Round((numOfPartTimeEmp/ totalNumOfEmployees) * 100,1);
 
 
-            Console.WriteLine($"The percentage of Salaried Employees is {percentOfSalariedEmp}%.");
-            Console.WriteLine($"The percentage of Wage Employees is {percentOfWagesEmp}%.");
-            Console.WriteLine($"The percentage of Part Time employees is {percentOfPartTimeEmp}%."); 
+            Console.WriteLine($"{percentOfSalariedEmp}% of the company's employees are Salaried Employees.");
+            Console.WriteLine($"{percentOfWagesEmp}% of the company's employees are Wage Employees.");
+            Console.WriteLine($"{percentOfPartTimeEmp}% of of the company's employees are Part Time employees."); 
 
             Console.ReadLine();
         }
